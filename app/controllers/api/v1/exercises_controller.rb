@@ -23,6 +23,15 @@ module Api::V1
       render json: @exercise
     end
 
+    def destroy
+      @exercise = Exercise.find(params[:id])
+      if @exercise.destroy
+        head :no_content, status: :ok
+      else
+        render json: @exercise.errors, status: :unprocessable_entity
+      end
+    end
+
     private
       def exercise_params
         params.require(:exercise).permit(:name, :exercise_id, :weight, :sets, :reps)
