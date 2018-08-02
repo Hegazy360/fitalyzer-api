@@ -3,7 +3,7 @@ module Api::V1
     # GET /users
     def index
       @exercises = Gym.find(params[:gym_id]).exercises.order("created_at ASC")
-      render json: @exercises
+      render json: @exercises.to_json( include: :sets )
     end
 
     def show

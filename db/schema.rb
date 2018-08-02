@@ -10,20 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_02_152851) do
+ActiveRecord::Schema.define(version: 2018_08_02_153656) do
 
   create_table "exercise_sets", force: :cascade do |t|
     t.integer "exercise_id"
     t.integer "weight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "reps"
     t.index ["exercise_id"], name: "index_exercise_sets_on_exercise_id"
   end
 
   create_table "exercises", force: :cascade do |t|
     t.integer "exercise_id"
     t.float "weight"
-    t.integer "reps"
     t.integer "gym_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
