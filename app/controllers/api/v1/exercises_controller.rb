@@ -14,13 +14,14 @@ module Api::V1
     def create
       @exercise = Exercise.create(exercise_params)
       Gym.find(params[:gym_id]).exercises << @exercise
-      render json: @exercise
+      @exercise.sets.create(sets_params[:sets])
+      render json: @exercise.to_json( include: :sets )
     end
 
     def update
       @exercise = Exercise.find(params[:id])
       @exercise.update_attributes(exercise_params)
-      render json: @exercise
+      render json: @exercise.to_json( include: :sets )
     end
 
     def destroy
@@ -34,7 +35,10 @@ module Api::V1
 
     private
       def exercise_params
-        params.require(:exercise).permit(:name, :exercise_id, :weight, :sets, :reps)
+        params.require(:exercise).permit(:name, :exercise_id)
+      end
+      def sets_params
+        params.require(:exercise).permit(sets: [:weight, :reps])
       end
   end
 end

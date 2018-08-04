@@ -15,9 +15,6 @@ gym1 = user1.create_gym
 gym1.exercises.create(
   {
     exercise_id: 1,
-    weight: 100,
-    reps: 10,
-    sets: 3,
     name: "Bench Press"
   }
 )
@@ -25,9 +22,6 @@ gym1.exercises.create(
 gym1.exercises.create(
   {
     exercise_id: 2,
-    weight: 150,
-    reps: 10,
-    sets: 3,
     name: "Deadlift"
   }
 )
@@ -35,9 +29,13 @@ gym1.exercises.create(
 gym1.exercises.create(
   {
     exercise_id: 3,
-    weight: 200,
-    reps: 10,
-    sets: 3,
     name: "Bench Press"
+  }
+)
+
+gym1.exercises.first.sets.create(
+  {
+    weight: 100,
+    reps: 15
   }
 )
