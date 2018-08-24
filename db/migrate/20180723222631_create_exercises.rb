@@ -8,6 +8,6 @@ class CreateExercises < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    add_index :exercises, :user_id
+    add_index :exercises
   end
 end
