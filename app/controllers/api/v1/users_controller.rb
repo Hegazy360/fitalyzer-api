@@ -6,8 +6,7 @@ module Api::V1
 
     # GET /users/:id
     def show
-      @user = User.find(params[:id])
-      render json: @user.to_json(:include => { :gym => { include: :exercises }})
+      render json: current_user.as_json(only: %i(id email name))
     end
   end
 end

@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2018_08_24_100850) do
   enable_extension "plpgsql"
 
   create_table "exercise_sets", force: :cascade do |t|
-    t.integer "exercise_id"
+    t.bigint "exercise_id"
     t.integer "weight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -40,10 +40,14 @@ ActiveRecord::Schema.define(version: 2018_08_24_100850) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "email"
     t.string "name"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "exercise_sets", "exercises"
   add_foreign_key "exercises", "gyms"
 end
