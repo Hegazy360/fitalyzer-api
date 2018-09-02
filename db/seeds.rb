@@ -9,8 +9,6 @@
 user1 = User.create!(
   name: "Mohamed",
   email: "mohamed@gmail.com",
-  password: 'password',
-  password_confirmation: 'password'
 )
 
 gym1 = user1.create_gym

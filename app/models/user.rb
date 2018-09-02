@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-  has_secure_password
   has_one :gym
-
-  validates :email, :password, presence: true
-  validates :email, uniqueness: true
-  validates :password, length: { minimum: 8 }
+  validates :auth_id, uniqueness: true
+  def self.from_token_payload payload
+    # Returns a valid user, `nil` or raise
+    @user = self.find_or_create_by(auth_id: payload['sub'])
+  end
 end

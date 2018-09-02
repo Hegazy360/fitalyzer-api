@@ -9,7 +9,6 @@ gem 'puma', '~> 3.11'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rack-cors', :require => 'rack/cors'
 gem 'knock'
-gem 'bcrypt'
 gem 'dotenv-rails'
 
 group :development, :test do
